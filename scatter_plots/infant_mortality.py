@@ -15,13 +15,11 @@ EURO_mean=data.groupby(['YEAR']).mean()
 
 # scatter plot using customized color_continuous_scale
 fig=px.scatter(EURO_mean, size='value', color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']],
-               title="Estimated infant mortality per 1000 live births")
+               title="Infant mortality in Europe per 1000 live births")
 fig.update_yaxes(title_text='Deaths per 1000 live births')
-
 fig.update(layout_coloraxis_showscale=False)
-
 fig.add_annotation(dict(font=dict(color='black',size=15)), x=1955, y=30,
-            text="©vizmeister.com",
+            text="©DataVization.com",
             showarrow=False,
             yshift=1)
 
