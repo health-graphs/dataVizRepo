@@ -26,9 +26,12 @@ filtered=EURO_mean.loc[1980:2018]
 
 # scatter plot using customized color_continuous_scale
 fig=px.scatter(filtered, size='value', color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']],
-               title="Average ...")
+               title="Average Incidence of cancer per 100 000 in Europe (1980-2018)")
+fig.update_yaxes(title_text='Diagnosed cancer cases per 100 000 population ')
+fig.update(layout_coloraxis_showscale=False)
 
 
-
+assure_path_exists('output/')
+fig.write_html("output/out.html")
 
 fig.show()
