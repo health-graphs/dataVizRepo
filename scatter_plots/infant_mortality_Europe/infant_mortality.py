@@ -26,7 +26,7 @@ fig=px.scatter(EURO_mean, size='value', color='value', color_continuous_scale=[[
 fig.update_yaxes(title_text='Deaths per 1000 live births')
 fig.update(layout_coloraxis_showscale=False)
 fig.add_annotation(dict(font=dict(color='#3366ff',size=15)), x=2000, y=46,
-            text="Visualised by DataVization.com",
+            text="Visualised by DataDeed.de",
             showarrow=False,
             yshift=1)
 
