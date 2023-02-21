@@ -36,6 +36,6 @@ fig.add_annotation(dict(font=dict(color='grey',size=15)), x=2000, y=43,
             yshift=1)
 
 assure_path_exists('output/')
-fig.write_html("output/out.html")
+fig.write_html("output/infant_mortality_Europe.html")
 
 fig.show()
