@@ -22,7 +22,7 @@ EURO_mean=round(data.groupby(['YEAR']).mean(),1)
 
 # scatter plot using customized color_continuous_scale
 fig=px.scatter(EURO_mean, size='value', color='value', width=1000, height=600, color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
-fig.update_yaxes(title_text='Deaths per 1000 live births')
+fig.update_yaxes(title_text='Infant deaths per 1000 live births')
 fig.update(layout_coloraxis_showscale=False)
 fig.add_annotation(dict(font=dict(color='#3366ff',size=15)), x=2000, y=46,
             text="Visualised by DataDeed.de",
