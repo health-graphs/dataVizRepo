@@ -25,13 +25,23 @@ EURO_mean=round(data.groupby(['YEAR']).mean(),1)
 filtered=EURO_mean.loc[1980:2018]
 
 # scatter plot using customized color_continuous_scale
-fig=px.scatter(filtered, size='value', color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']],
-               title="Average Incidence of cancer per 100 000 in Europe (1980-2018)")
+fig=px.scatter(filtered, size='value', color='value', width=1000, height=600, color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
 fig.update_yaxes(title_text='Diagnosed cancer cases per 100 000 population ')
 fig.update(layout_coloraxis_showscale=False)
 
+fig.add_annotation(dict(font=dict(color='#3366ff',size=15)), x=1990, y=400,
+            text="Visualised by DataDeed.de",
+            showarrow=False,
+            yshift=1)
+
+fig.add_annotation(dict(font=dict(color='grey',size=15)), x=1990, y=420,
+            text="Data Source: European Health Information Gateway (WHO)",
+            showarrow=False,
+            yshift=1)
+
 
 assure_path_exists('output/')
-fig.write_html("output/out.html")
+fig.write_html("output/cancer_cases_Europe.html")
+fig.write_image("output/cancer_cases_Europe.jpg", scale=2.0)
 
 fig.show()
