@@ -56,4 +56,4 @@ fig2.write_image("output/US_Cancer_statistics_2023_Females.jpg", scale=2.0)
 
 
 # fig.show()
-fig2.show()
+# fig2.show()
