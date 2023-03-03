@@ -34,6 +34,8 @@ fig.add_annotation(dict(font=dict(color='grey',size=15)), x=2000, y=43,
             showarrow=False,
             yshift=1)
 
+fig.update_layout(modebar_remove=['lasso2d','select2d'])            
+
 assure_path_exists('output/')
 fig.write_html("output/infant_mortality_Europe.html")
 fig.write_image("output/infant_mortality_Europe.jpg", scale=2.0)

@@ -39,6 +39,7 @@ fig.add_annotation(dict(font=dict(color='grey',size=15)), x=1990, y=420,
             showarrow=False,
             yshift=1)
 
+fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
 assure_path_exists('output/')
 fig.write_html("output/cancer_cases_Europe.html")
