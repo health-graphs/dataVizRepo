@@ -21,20 +21,20 @@ data=pd.read_csv('data/HFA_73_EN.csv', sep=',',
 EURO_mean=round(data.groupby(['YEAR']).mean(),1)
 
 # scatter plot using customized color_continuous_scale
-fig=px.scatter(EURO_mean, size='value', color='value', width=1000, height=600, color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
+fig=px.scatter(EURO_mean, size='value', color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
 fig.update_yaxes(title_text='Infant deaths per 1000 live births')
 fig.update(layout_coloraxis_showscale=False)
-fig.add_annotation(dict(font=dict(color='#3366ff',size=15)), x=2000, y=46,
-            text="Visualised by DataDeed.de",
+fig.add_annotation(dict(font=dict(color='black',size=10)), x=1955, y=15,
+            text="©DataDeed.de",
             showarrow=False,
             yshift=1)
 
-fig.add_annotation(dict(font=dict(color='grey',size=15)), x=2000, y=43,
-            text="Data Source: European Health Information Gateway (WHO)",
-            showarrow=False,
-            yshift=1)
+# fig.add_annotation(dict(font=dict(color='grey',size=15)), x=2000, y=43,
+#             text="Data Source: European Health Information Gateway (WHO)",
+#             showarrow=False,
+#             yshift=1)
 
-fig.update_layout(modebar_remove=['lasso2d','select2d'])            
+fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
 assure_path_exists('output/')
 fig.write_html("output/infant_mortality_Europe.html")
