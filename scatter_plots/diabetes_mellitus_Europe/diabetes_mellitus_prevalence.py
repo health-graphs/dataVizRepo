@@ -40,6 +40,6 @@ fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
 assure_path_exists('output/')
 fig.write_html("output/diabetes_mellitus_Europe_prevalence.html")
-fig.write_image("output/diabetes_mellitus_Europe_prevalence.jpg", scale=2.0)
+fig.write_image("output/diabetes_mellitus_Europe_prevalence.jpg", scale=5.0)
 
 fig.show()
