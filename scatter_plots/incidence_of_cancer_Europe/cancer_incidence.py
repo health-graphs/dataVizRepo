@@ -25,7 +25,7 @@ EURO_mean=round(data.groupby(['YEAR']).mean(),1)
 filtered=EURO_mean.loc[1980:2018]
 
 # scatter plot using customized color_continuous_scale
-fig=px.scatter(filtered, size='value', color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
+fig=px.scatter(filtered, size='value', size_max=30, color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
 fig.update_yaxes(title_text='Diagnosed cancer cases per 100 000 population ')
 fig.update(layout_coloraxis_showscale=False)
 
@@ -43,6 +43,6 @@ fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
 assure_path_exists('output/')
 fig.write_html("output/cancer_cases_Europe.html")
-fig.write_image("output/cancer_cases_Europe.jpg", scale=2.0)
+fig.write_image("output/cancer_cases_Europe.jpg", scale=5.0)
 
 fig.show()
