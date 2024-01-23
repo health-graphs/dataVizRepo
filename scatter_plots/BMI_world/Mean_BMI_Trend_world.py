@@ -23,12 +23,26 @@ data_males=data_males.drop([0, 1, 2])
 data_males=data_males.rename(columns={'Unnamed: 0': 'Countries'}, errors="raise")
 
 
-
+# Define a regular expression to extract the measurement part
 pattern = r'(\d+\.\d+)'
+
+# Apply the regular expression to each cell in the DataFrame (excluding the first column)
 data_males.iloc[:, 1:] = data_males.iloc[:, 1:].apply(lambda col: col.str.extract(pattern, expand=False))
 
+# Convert the measurement values to numeric (float) for averaging
 data_males.iloc[:, 1:] = data_males.iloc[:, 1:].apply(pd.to_numeric, errors='coerce')
 
+# Calculate the mean along each column (year)
+average_per_year_males = data_males.iloc[:, 1:].mean()
+
+# Sort the result in ascending order based on the number of years
+average_per_year_males_sorted = average_per_year_males.sort_values()
+
+# Convert the Series to a DataFrame
+average_per_year_df_males = average_per_year_males_sorted.to_frame(name='Mean BMI')
+
+# Rename the index to 'YEAR'
+average_per_year_df_males = average_per_year_df_males.rename_axis('YEAR')
 
 
 
