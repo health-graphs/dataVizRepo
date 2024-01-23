@@ -14,7 +14,7 @@ def assure_path_exists(raw_path):
         if not os.path.exists(dir):
                 os.makedirs(dir)
 
-data_males=pd.read_csv('NCD_BMI_MEANC_males.csv', sep=',', header=0)
+data_males=pd.read_csv('data/NCD_BMI_MEANC_males.csv', sep=',', header=0)
 
 #removing the first three rows
 data_males=data_males.drop([0, 1, 2])
@@ -25,9 +25,9 @@ data_males=data_males.rename(columns={'Unnamed: 0': 'Countries'}, errors="raise"
 
 
 pattern = r'(\d+\.\d+)'
-data.iloc[:, 1:] = data.iloc[:, 1:].apply(lambda col: col.str.extract(pattern, expand=False))
+data_males.iloc[:, 1:] = data_males.iloc[:, 1:].apply(lambda col: col.str.extract(pattern, expand=False))
 
-data.iloc[:, 1:] = data.iloc[:, 1:].apply(pd.to_numeric, errors='coerce')
+data_males.iloc[:, 1:] = data_males.iloc[:, 1:].apply(pd.to_numeric, errors='coerce')
 
 
 
