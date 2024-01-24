@@ -7,6 +7,7 @@
 import os
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
 
 def assure_path_exists(raw_path):
@@ -54,23 +55,44 @@ average_per_year_df_males = average_per_year_df_males.rename_axis('YEAR')
 average_per_year_df_females = average_per_year_df_females.rename_axis('YEAR')
 
 
+main_opacity=1.0
+custom_color_scale = [
+    [0.0, 'green'],
+    [0.5, 'yellow'],
+    [1.0, 'red']
+]
 
+fig = go.Figure()
 
-# scatter plot using customized color_continuous_scale
-fig=px.scatter(average_per_year_df_males, size='value', size_max=30, color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
+# Add traces
+fig.add_trace(go.Scatter(x=average_per_year_df_males.index, y=average_per_year_df_males.Mean_BMI,
+                    mode='markers', name='Males',
+                    opacity=main_opacity,
+                    marker=dict(
+                            size=average_per_year_df_males.Mean_BMI*1.3,
+                            symbol=9,
+                            color=average_per_year_df_males.Mean_BMI,
+                            colorscale=custom_color_scale)))
 
-
+fig.add_trace(go.Scatter(x=average_per_year_df_females.index, y=average_per_year_df_females.Mean_BMI,
+                    mode='markers', name='Females',
+                    opacity=main_opacity,
+                    marker=dict(
+                            size=average_per_year_df_females.Mean_BMI*1.3,
+                            symbol=3,
+                            color=average_per_year_df_females.Mean_BMI,
+                            colorscale=custom_color_scale)))
 
 
 
 
 fig.update_yaxes(title_text='Average Worldwide BMI Trend')
+fig.update_xaxes(title_text='YEAR')
 fig.update(layout_coloraxis_showscale=False)
-# fig.add_annotation(dict(font=dict(color='black',size=10)), x=20, y=22.5,
-#             text="©DataDeed.de",
-#             showarrow=False,
-#             yshift=1)
-
+fig.add_annotation(dict(font=dict(color='black',size=10)), x=30, y=22.5,
+            text="©DataDeed.de",
+            showarrow=False,
+            yshift=1)
 
 fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
