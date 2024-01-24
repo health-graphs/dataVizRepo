@@ -69,19 +69,19 @@ fig.add_trace(go.Scatter(x=average_per_year_df_males.index, y=average_per_year_d
                     mode='markers', name='Males',
                     opacity=main_opacity,
                     marker=dict(
-                            size=average_per_year_df_males.Mean_BMI*1.3,
+                            size=average_per_year_df_males.Mean_BMI,
                             symbol=9,
                             color=average_per_year_df_males.Mean_BMI,
-                            colorscale=custom_color_scale)))
+                            colorscale='Plasma')))
 
 fig.add_trace(go.Scatter(x=average_per_year_df_females.index, y=average_per_year_df_females.Mean_BMI,
                     mode='markers', name='Females',
                     opacity=main_opacity,
                     marker=dict(
-                            size=average_per_year_df_females.Mean_BMI*1.3,
+                            size=average_per_year_df_females.Mean_BMI,
                             symbol=3,
                             color=average_per_year_df_females.Mean_BMI,
-                            colorscale=custom_color_scale)))
+                            colorscale='Viridis')))
 
 
 
