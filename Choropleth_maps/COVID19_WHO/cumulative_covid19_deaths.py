@@ -52,7 +52,7 @@ fig.update_coloraxes(colorbar_tickmode='array', colorbar_tickvals=tick_positions
 fig.update_coloraxes(colorbar_orientation='h')
 fig.update_coloraxes(colorbar_title_text='Cumulative COVID-19 Deaths')
 
-
+fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
 assure_path_exists('output/')
 fig.write_html("output/cumulative_COVID19_death_WHO.html")
