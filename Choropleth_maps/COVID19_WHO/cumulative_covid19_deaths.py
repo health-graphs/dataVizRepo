@@ -35,7 +35,7 @@ data['country_code_alpha3'] = data['Country_code'].apply(alpha2_to_alpha3)
 # Convert 'Cumulative_deaths' to log for a better color diffrentiation, but control the tick values.
 
 data['log_Cumulative_deaths'] = np.log10(data['Cumulative_deaths'] + 1)
-tick_positions = [1,2,3,4,5,6,7,8,9,10]
+tick_positions = [0,1,2,3,4,5,6,7,8,9,10]
 tick_texts = [str(int(10**(tick))) for tick in tick_positions]
 
 # Create the interactive world map
