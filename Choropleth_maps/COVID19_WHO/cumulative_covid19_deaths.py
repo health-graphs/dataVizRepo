@@ -14,7 +14,7 @@ def assure_path_exists(raw_path):
         if not os.path.exists(dir):
                 os.makedirs(dir)
 
-data=pd.read_csv('/Users/javanmardi/Work/DataViz/dataViz_data/COVID19/WHO/WHO-COVID-19-global-data.csv', sep=',', header=0)
+data=pd.read_csv('data/WHO-COVID-19-global-data.csv', sep=',', header=0)
 
 
 # Enhanced function to convert two-letter country codes to three-letter codes
@@ -43,8 +43,9 @@ fig = px.choropleth(data, locations='country_code_alpha3',
                     color='log_Cumulative_deaths',
                     hover_name='Country',
                     hover_data={'Cumulative_deaths': True, 'log_Cumulative_deaths': False, 'country_code_alpha3': False},
-                    animation_frame= "Date_reported",color_continuous_scale='Portland')
+                    animation_frame= "Date_reported",color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
 
+#'Portland'
 
 # Customize the colorbar to reflect the original data values
 fig.update_coloraxes(colorbar_tickmode='array', colorbar_tickvals=tick_positions, colorbar_ticktext=tick_texts)
