@@ -19,13 +19,19 @@ data=pd.read_csv('data/death_rate_cardiovascular_diseases_WHO.csv', sep=',', ski
 # Create the interactive world map
 fig = px.choropleth(data, locations='Code',
                     color='Death',
-                    hover_name='Entity', hover_data={'Death': True, 'Code': False}, animation_frame= "Year",color_continuous_scale='Oryel')
+                    hover_name='Entity', hover_data={'Death': True, 'Code': False}, animation_frame= "Year",color_continuous_scale='Burgyl')
 
 fig.update_coloraxes(colorbar_orientation='h')
 fig.update_coloraxes(colorbar_title_text='Death rate from cardiovascular diseases')
 
-
 fig.update_layout(modebar_remove=['lasso2d','select2d'])
+
+fig.add_annotation(dict(font=dict(color='black',size=10)), x=0.95, y=-0.05,
+            text="©DataDeed.de",
+            showarrow=False,
+            yshift=1)
+
+
 
 assure_path_exists('output/')
 fig.write_html("output/death_rate_cardiovascular_diseases_WHO.html")
