@@ -54,6 +54,11 @@ fig.update_coloraxes(colorbar_title_text='Cumulative COVID-19 Deaths')
 
 fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
+fig.add_annotation(dict(font=dict(color='black',size=10)), x=0.95, y=-0.05,
+            text="©DataDeed.de",
+            showarrow=False,
+            yshift=1)
+
 assure_path_exists('output/')
 fig.write_html("output/cumulative_COVID19_death_WHO.html")
 
