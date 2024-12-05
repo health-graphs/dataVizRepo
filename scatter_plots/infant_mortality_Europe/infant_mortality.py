@@ -25,7 +25,7 @@ fig=px.scatter(EURO_mean, size='value', size_max=30, color='value', color_contin
 fig.update_yaxes(title_text='Infant deaths per 1000 live births')
 fig.update(layout_coloraxis_showscale=False)
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=1955, y=15,
-            text="©DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 

@@ -27,7 +27,7 @@ fig.update_coloraxes(colorbar_title_text='Death rate from cardiovascular disease
 fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=0.95, y=-0.05,
-            text="©2024 DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 
@@ -35,6 +35,8 @@ fig.add_annotation(dict(font=dict(color='black',size=10)), x=0.95, y=-0.05,
 
 assure_path_exists('output/')
 fig.write_html("output/death_rate_cardiovascular_diseases_WHO.html")
+fig.write_image("output/death_rate_cardiovascular_diseases_WHO.jpg", scale=5.0)
+
 
 
 fig.show()

@@ -30,7 +30,7 @@ fig.update_yaxes(title_text='Diagnosed cancer cases per 100 000 population ')
 fig.update(layout_coloraxis_showscale=False)
 
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=2012, y=280,
-            text="©DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 

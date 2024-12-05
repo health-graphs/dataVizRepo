@@ -62,6 +62,8 @@ custom_color_scale = [
     [1.0, 'red']
 ]
 
+
+color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']]
 fig = go.Figure()
 
 # Add traces
@@ -72,7 +74,7 @@ fig.add_trace(go.Scatter(x=average_per_year_df_males.index, y=average_per_year_d
                             size=average_per_year_df_males.Mean_BMI,
                             symbol=9,
                             color=average_per_year_df_males.Mean_BMI,
-                            colorscale='Plasma')))
+                            colorscale=color_continuous_scale)))
 
 fig.add_trace(go.Scatter(x=average_per_year_df_females.index, y=average_per_year_df_females.Mean_BMI,
                     mode='markers', name='Females',
@@ -81,7 +83,7 @@ fig.add_trace(go.Scatter(x=average_per_year_df_females.index, y=average_per_year
                             size=average_per_year_df_females.Mean_BMI,
                             symbol=3,
                             color=average_per_year_df_females.Mean_BMI,
-                            colorscale='Viridis')))
+                            colorscale=color_continuous_scale)))
 
 
 
@@ -90,7 +92,7 @@ fig.update_yaxes(title_text='Average Worldwide BMI Trend')
 fig.update_xaxes(title_text='YEAR')
 fig.update(layout_coloraxis_showscale=False)
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=30, y=22.5,
-            text="©DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 

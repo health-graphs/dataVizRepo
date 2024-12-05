@@ -23,7 +23,7 @@ data=pd.read_csv('data/US_Cancer_statistics_2023.csv', sep=';', header=0)
 fig = px.pie(data, values='Estimated new cases Male', names='Cancer Type')
 
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=0.01, y=0.01,
-            text="©DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 #
@@ -40,7 +40,7 @@ fig.update_layout(uniformtext_minsize=12, uniformtext_mode='hide')
 fig2 = px.pie(data, values='Estimated new cases Female', names='Cancer Type')
 
 fig2.add_annotation(dict(font=dict(color='black',size=10)), x=0.01, y=0.01,
-            text="©DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 #

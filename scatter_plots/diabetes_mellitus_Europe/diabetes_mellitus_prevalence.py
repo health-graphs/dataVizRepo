@@ -27,7 +27,7 @@ fig=px.scatter(EURO_mean_after_1979, size='value', size_max=30, color='value', c
 fig.update_yaxes(title_text='Prevalence of diabetes mellitus (%)')
 fig.update(layout_coloraxis_showscale=False)
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=2012, y=1.3,
-            text="©DataDeed.de",
+            text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=1)
 
