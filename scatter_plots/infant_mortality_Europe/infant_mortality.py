@@ -29,10 +29,6 @@ fig.add_annotation(dict(font=dict(color='black',size=10)), x=1955, y=15,
             showarrow=False,
             yshift=1)
 
-# fig.add_annotation(dict(font=dict(color='grey',size=15)), x=2000, y=43,
-#             text="Data Source: European Health Information Gateway (WHO)",
-#             showarrow=False,
-#             yshift=1)
 
 fig.update_layout(modebar_remove=['lasso2d','select2d'])
 
