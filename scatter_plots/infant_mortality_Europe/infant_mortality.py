@@ -27,10 +27,14 @@ fig.update(layout_coloraxis_showscale=False)
 fig.add_annotation(dict(font=dict(color='black',size=10)), x=1955, y=15,
             text="©2024 Health-Graphs.com",
             showarrow=False,
-            yshift=1)
+            yshift=10)
 
 
-fig.update_layout(modebar_remove=['lasso2d','select2d'])
+
+fig.update_layout(
+    autosize=True,
+    modebar_remove=['lasso2d', 'select2d']
+)
 
 assure_path_exists('output/')
 fig.write_html("output/infant_mortality_Europe.html")
