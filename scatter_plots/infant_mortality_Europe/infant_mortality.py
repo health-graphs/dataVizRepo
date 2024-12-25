@@ -21,10 +21,10 @@ data=pd.read_csv('data/HFA_73_EN.csv', sep=',',
 EURO_mean=round(data.groupby(['YEAR']).mean(),1)
 
 # scatter plot using customized color_continuous_scale
-fig=px.scatter(EURO_mean, size='value', size_max=30, color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
+fig=px.scatter(EURO_mean, size='value', size_max=15, color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
 fig.update_yaxes(title_text='Infant deaths per 1000 live births')
 fig.update(layout_coloraxis_showscale=False)
-fig.add_annotation(dict(font=dict(color='black',size=10)), x=1955, y=15,
+fig.add_annotation(dict(font=dict(color='black',size=9)), x=1953, y=10,
             text="©2024 Health-Graphs.com",
             showarrow=False,
             yshift=10)
