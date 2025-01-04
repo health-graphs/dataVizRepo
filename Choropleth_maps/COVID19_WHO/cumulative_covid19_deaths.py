@@ -52,12 +52,15 @@ fig.update_coloraxes(colorbar_tickmode='array', colorbar_tickvals=tick_positions
 fig.update_coloraxes(colorbar_orientation='h')
 fig.update_coloraxes(colorbar_title_text='Cumulative COVID-19 Deaths')
 
-fig.update_layout(modebar_remove=['lasso2d','select2d'])
+fig.update_layout(
+    autosize=True,
+    modebar_remove=['lasso2d', 'select2d']
+)
 
-fig.add_annotation(dict(font=dict(color='black',size=10)), x=0.95, y=-0.05,
-            text="©2024 Health-Graphs.com",
+fig.add_annotation(dict(font=dict(color='black',size=9)), x=0.95, y=-0.05,
+            text="©2024 Health-Graphs.org",
             showarrow=False,
-            yshift=1)
+            yshift=10)
 
 assure_path_exists('output/')
 fig.write_html("output/cumulative_COVID19_death_WHO.html")
