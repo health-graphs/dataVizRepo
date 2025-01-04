@@ -26,7 +26,7 @@ EURO_mean_after_1979 = EURO_mean[EURO_mean.index>1979]
 fig=px.scatter(EURO_mean_after_1979, size='value', size_max=15, color='value', color_continuous_scale=[[0, 'green'], [0.5, '#e6e600'], [1, 'red']])
 fig.update_yaxes(title_text='Prevalence of diabetes mellitus (%)')
 fig.update(layout_coloraxis_showscale=False)
-fig.add_annotation(dict(font=dict(color='black',size=9)), x=2016, y=1.3,
+fig.add_annotation(dict(font=dict(color='black',size=9)), x=2016, y=1.0,
             text="©2024 Health-Graphs.org",
             showarrow=False,
             yshift=10)

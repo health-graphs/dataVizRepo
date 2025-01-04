@@ -25,21 +25,19 @@ EURO_mean=round(data.groupby(['YEAR']).mean(),1)
 filtered=EURO_mean.loc[1980:2018]
 
 # scatter plot using customized color_continuous_scale
-fig=px.scatter(filtered, size='value', size_max=30, color='value', color_continuous_scale=[[0, 'green'], [0.5, 'yellow'], [1, 'red']])
+fig=px.scatter(filtered, size='value', size_max=15, color='value', color_continuous_scale=[[0, 'green'], [0.5, '#e6e600'], [1, 'red']])
 fig.update_yaxes(title_text='Diagnosed cancer cases per 100 000 population ')
 fig.update(layout_coloraxis_showscale=False)
 
-fig.add_annotation(dict(font=dict(color='black',size=10)), x=2012, y=280,
-            text="©2024 Health-Graphs.com",
+fig.add_annotation(dict(font=dict(color='black',size=9)), x=2010, y=260,
+            text="©2024 Health-Graphs.org",
             showarrow=False,
-            yshift=1)
+            yshift=10)
 
-# fig.add_annotation(dict(font=dict(color='grey',size=15)), x=1990, y=420,
-#             text="Data Source: European Health Information Gateway (WHO)",
-#             showarrow=False,
-#             yshift=1)
-
-fig.update_layout(modebar_remove=['lasso2d','select2d'])
+fig.update_layout(
+    autosize=True,
+    modebar_remove=['lasso2d', 'select2d']
+)
 
 assure_path_exists('output/')
 fig.write_html("output/cancer_cases_Europe.html")

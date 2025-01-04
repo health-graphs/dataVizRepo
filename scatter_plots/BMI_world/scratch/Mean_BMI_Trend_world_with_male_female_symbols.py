@@ -63,50 +63,88 @@ custom_color_scale = [
 ]
 
 
-# Define a scaling factor for marker sizes
-scaling_factor = 0.6
-
 color_continuous_scale=[[0, 'green'], [0.5, '#e6e600'], [1, 'red']]
 fig = go.Figure()
 
-# Add male trace with scaled marker sizes
+# # Add traces
+# fig.add_trace(go.Scatter(x=average_per_year_df_males.index, y=average_per_year_df_males.Mean_BMI,
+#                     mode='markers', name='Males',
+#                     opacity=main_opacity,
+#                     marker=dict(
+#                             size=average_per_year_df_males.Mean_BMI,
+#                             symbol=9,
+#                             color=average_per_year_df_males.Mean_BMI,
+#                             colorscale=color_continuous_scale)))
+#
+# fig.add_trace(go.Scatter(x=average_per_year_df_females.index, y=average_per_year_df_females.Mean_BMI,
+#                     mode='markers', name='Females',
+#                     opacity=main_opacity,
+#                     marker=dict(
+#                             size=average_per_year_df_females.Mean_BMI,
+#                             symbol=3,
+#                             color=average_per_year_df_females.Mean_BMI,
+#                             colorscale=color_continuous_scale)))
+
+
+# Define the color scale
+color_continuous_scale = px.colors.sequential.Viridis
+
+# Get min and max BMI for color scaling and font sizing
+bmi_min = min(average_per_year_df_males['Mean_BMI'].min(), average_per_year_df_females['Mean_BMI'].min())
+bmi_max = max(average_per_year_df_males['Mean_BMI'].max(), average_per_year_df_females['Mean_BMI'].max())
+
+# Function to map BMI values to colors
+def map_color(value, vmin, vmax, colorscale):
+    norm = (value - vmin) / (vmax - vmin)
+    color_idx = int(norm * (len(colorscale) - 1))
+    return colorscale[color_idx]
+
+# Function to calculate font size based on BMI
+def calc_font_size(value, vmin, vmax, min_size, max_size):
+    norm = (value - vmin) / (vmax - vmin)
+    return norm * (max_size - min_size) + min_size
+
+# Map BMI values to colors and font sizes for males and females
+male_colors = average_per_year_df_males['Mean_BMI'].apply(map_color, args=(bmi_min, bmi_max, color_continuous_scale))
+female_colors = average_per_year_df_females['Mean_BMI'].apply(map_color, args=(bmi_min, bmi_max, color_continuous_scale))
+male_font_sizes = average_per_year_df_males['Mean_BMI'].apply(calc_font_size, args=(bmi_min, bmi_max, 15, 35))
+female_font_sizes = average_per_year_df_females['Mean_BMI'].apply(calc_font_size, args=(bmi_min, bmi_max, 15, 35))
+
+# Initialize figure
+fig = go.Figure()
+
+# Add Male trace
 fig.add_trace(go.Scatter(
     x=average_per_year_df_males.index,
     y=average_per_year_df_males.Mean_BMI,
-    mode='markers',
+    mode='text',
     name='Males',
-    opacity=main_opacity,
-    marker=dict(
-        size=average_per_year_df_males.Mean_BMI * scaling_factor,  # Scale marker size
-        symbol=9,
-        color=average_per_year_df_males.Mean_BMI,
-        colorscale=color_continuous_scale
+    text=['\u2642']*len(average_per_year_df_males),
+    textfont=dict(
+        size=male_font_sizes,
+        color=male_colors
     )
 ))
 
-# Add female trace with scaled marker sizes
+# Add Female trace
 fig.add_trace(go.Scatter(
     x=average_per_year_df_females.index,
     y=average_per_year_df_females.Mean_BMI,
-    mode='markers',
+    mode='text',
     name='Females',
-    opacity=main_opacity,
-    marker=dict(
-        size=average_per_year_df_females.Mean_BMI * scaling_factor,  # Scale marker size
-        symbol=3,
-        color=average_per_year_df_females.Mean_BMI,
-        colorscale=color_continuous_scale
+    text=['\u2640']*len(average_per_year_df_females),
+    textfont=dict(
+        size=female_font_sizes,
+        color=female_colors
     )
 ))
-
-
 
 
 
 fig.update_yaxes(title_text='Average Worldwide BMI Trend')
 fig.update_xaxes(title_text='YEAR')
 fig.update(layout_coloraxis_showscale=False)
-fig.add_annotation(dict(font=dict(color='black',size=9)), x=34, y=22.5,
+fig.add_annotation(dict(font=dict(color='black',size=10)), x=35, y=22.5,
             text="©2024 Health-Graphs.org",
             showarrow=False,
             yshift=10)
